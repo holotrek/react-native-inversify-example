@@ -1,4 +1,4 @@
-import { Container, inject, injectable } from "inversify";
+import { Container, inject, injectable } from 'inversify';
 
 class FakeLocalStorage {
   private _storage: { [key: string]: string } = {};
@@ -82,13 +82,13 @@ async function RunTest() {
   const combatantService = container.get(CombatantService);
 
   await combatantService.chooseCombatant("ninja");
-  const expectedNinja = container.get<Combatant>(GET_COMBATANT_CHOICE_TYPE);
+  const expectedNinja = container.get<Combatant>(CURRENT_COMBATANT_TYPE);
   console.log(
     `Expected Ninja with power=5;stealth=10. Actual: power=${expectedNinja.power};stealth=${expectedNinja.stealth}`
   );
 
   await combatantService.chooseCombatant("samurai");
-  const expectedSamurai = container.get<Combatant>(GET_COMBATANT_CHOICE_TYPE);
+  const expectedSamurai = container.get<Combatant>(CURRENT_COMBATANT_TYPE);
   console.log(
     `Expected Samurai with power=10;stealth=5. Actual: power=${expectedSamurai.power};stealth=${expectedSamurai.stealth}`
   );
